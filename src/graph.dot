@@ -1,0 +1,19 @@
+digraph G {
+rankdir=LR;
+empty [label = "" shape = plaintext];
+node [shape = doublecircle]; e1 e2;
+node [shape = circle];
+empty -> s0 [label = "開始"];
+        s0 -> s1 [label = "ε"]
+s1 -> s2 [label = "ε"]
+s2 -> s4 [label = "ε"]
+s2 -> s5 [label = "ε"]
+s2 -> s3 [label = "ε"]
+s3 -> s4 [label = "a"]
+s4 -> s5 [label = "ε"]
+s5 -> s6 [label = "b"]
+s5 -> s7 [label = "ε"]
+s6 -> s7 [label = "ε"]
+s7 -> s1 [label = "ε"]
+s7 -> s8 [label = "ε"]
+}

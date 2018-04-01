@@ -1,0 +1,14 @@
+[[package]]
+name = "regex"
+version = "0.1.0"
+dependencies = [
+ "regparser 0.1.0 (git+https://github.com/pipopa/regparser)",
+]
+
+[[package]]
+name = "regparser"
+version = "0.1.0"
+source = "git+https://github.com/pipopa/regparser#83a7afc767b8019b6314117421bb3d8ff84a5f8c"
+
+[metadata]
+"checksum regparser 0.1.0 (git+https://github.com/pipopa/regparser)" = "<none>"

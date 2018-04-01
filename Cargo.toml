@@ -1,0 +1,9 @@
+[package]
+name = "regex"
+version = "0.1.0"
+authors = ["pipopa <pipopa.710@gmail.com>"]
+
+[dependencies]
+
+[dependencies.regparser]
+git = "https://github.com/pipopa/regparser"
