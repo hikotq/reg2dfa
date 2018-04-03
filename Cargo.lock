@@ -1,7 +1,13 @@
 [[package]]
+name = "lazy_static"
+version = "1.0.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+
+[[package]]
 name = "regex"
 version = "0.1.0"
 dependencies = [
+ "lazy_static 1.0.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "regparser 0.1.0 (git+https://github.com/pipopa/regparser)",
 ]
 
@@ -11,4 +17,5 @@ version = "0.1.0"
 source = "git+https://github.com/pipopa/regparser#83a7afc767b8019b6314117421bb3d8ff84a5f8c"
 
 [metadata]
+"checksum lazy_static 1.0.0 (registry+https://github.com/rust-lang/crates.io-index)" = "c8f31047daa365f19be14b47c29df4f7c3b581832407daabe6ae77397619237d"
 "checksum regparser 0.1.0 (git+https://github.com/pipopa/regparser)" = "<none>"
