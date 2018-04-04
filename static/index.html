@@ -2,13 +2,30 @@
 <!DOCTYPE html>
 <html>
   <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
-<meta content="utf-8" http-equiv="encoding">
+  <meta content="utf-8" http-equiv="encoding">
   <body>
-    <div id="dot"></div>
-    <script src="viz.js"></script>
+    <style type="text/css">
+      <!--
+    form {
+      display: inline-block;
+      text-align: center;
+    }
+      //-->
+    </style>
+    <div id="wrapper">
+      <div id="container">
+        <form name="regex_form" action="index.html">
+          <input type="text" name="textbox">
+          <input type="button" value="Convert!!" onclick="regex_to_dfa()">
+        </form>
+      </div>
+    </div>
+      <div id="dot"></div>
+    <script src="js/viz.js"></script>
     <script>
+      function regex_to_dfa() {
       (async() => {
-      const res = await fetch('regex.wasm');
+      const res = await fetch('js/regex.wasm');
       const buffer = await res.arrayBuffer();
       const module = await WebAssembly.compile(buffer);
       var importObj = {env: {
@@ -20,7 +37,7 @@
       const linearMemory = instance.exports.memory;
 
       // create a buffer starting at the reference to the exported string
-      const s = "ab";
+      const s = regex_form.textbox.value;
       const offset = instance.exports.alloc(s.length);
       stringBuffer = new Uint8Array(linearMemory.buffer, offset,
         s.length);
@@ -43,6 +60,8 @@
       const svg = Viz(str);
       document.getElementById("dot").innerHTML = svg;
       })();
+      }
     </script>
+  <link rel="stylesheet" type="text/css" href="css/main.css">
   </body>
 </html>
