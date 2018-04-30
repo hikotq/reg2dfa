@@ -1,23 +1,14 @@
-mod nfa;
-mod dfa;
-extern crate regparser;
-use std::mem;
-use std::ffi::CStr;
-use std::os::raw::{c_char, c_void};
-use std::sync::Mutex;
-use std::io::Write;
-use std::str;
-use regparser::parser::{Lexer, Parser};
-use nfa::Nfa;
-use dfa::Dfa;
 #[macro_use]
 extern crate lazy_static;
+extern crate regex;
+extern crate regparser;
+
+use std::os::raw::c_char;
+use std::sync::Mutex;
+use std::io::Write;
+use regex::{dfa::Dfa, nfa::Nfa};
 
 pub fn main() {}
-
-extern "C" {
-    fn print(n: String);
-}
 
 lazy_static! {
     static ref HEAP: Mutex<Vec<u8>> = Mutex::new(Vec::new());
@@ -49,7 +40,7 @@ pub fn get_dot() -> *mut c_char {
         .iter()
         .map(|&b| b as char)
         .collect::<String>();
-    let nfa = nfa::Nfa::re2nfa(&regex);
+    let nfa = Nfa::re2nfa(&regex);
     let dfa = Dfa::nfa2dfa(&nfa);
 
     output.clear();
