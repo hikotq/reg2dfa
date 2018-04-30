@@ -25,7 +25,7 @@
     <script>
       function regex_to_dfa() {
       (async() => {
-      const res = await fetch('js/regex.wasm');
+      const res = await fetch('js/reg2dfa.wasm');
       const buffer = await res.arrayBuffer();
       const module = await WebAssembly.compile(buffer);
       var importObj = {env: {

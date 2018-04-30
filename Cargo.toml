@@ -1,11 +1,23 @@
 [package]
-name = "regex"
+name = "reg2dfa"
 version = "0.1.0"
 authors = ["pipopa <pipopa.710@gmail.com>"]
 
 [dependencies]
 lazy_static = "1.0"
 
+[dependencies.regex]
+git = "https://github.com/pipopa/regex"
+
 [dependencies.regparser]
 git = "https://github.com/pipopa/regparser"
 
+[profile.release]
+opt-level = 'z'
+debug = false
+rpath = false
+lto = true
+debug-assertions = false
+codegen-units = 1
+incremental = false
+overflow-checks = false
